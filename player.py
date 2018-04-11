@@ -77,7 +77,7 @@ class Player:
         :param target: The target that is shot at, used for calculating dealt damage.
         :return: Tuple, containing damage dealt as an integer, and time extended (or reduced) by the last shot.
         """
-        return 1000, 0
+        return 100, 0
 
     def fight(self, target, time_window):
         """
@@ -111,7 +111,7 @@ class Player:
                 time_window = 0
 
         # Reduce cooldowns by the total actionable time
-        for k in self.cooldowns:
+        for k in list(self.cooldowns.keys()):
             self.cooldowns[k] -= total_actionable_time
             if self.cooldowns[k] <= 0:
                 del self.cooldowns[k]
